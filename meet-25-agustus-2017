@@ -358,3 +358,14 @@ mysql> select * from customer where not kota='Bekasi';
 2 rows in set (0.00 sec)
 
 mysql>
+
+mysql> select * from customer where nama_pelanggan like 'ind%' and negara like '%nd%' order by kota asc;
++--------------+---------------------+----------------+-------------------------+----------+----------+-----------+
+| id_pelanggan | nama_pelanggan      | kontak         | alamat                  | kota     | kode_pos | negara    |
++--------------+---------------------+----------------+-------------------------+----------+----------+-----------+
+| cs0001       | Indriana Dewi Putri | +6281xxxxxxxxx | Jl. Duri Duren No. 40   | Bekasi   | 18466    | Indonesia |
+| cs0002       | Indra Muntahar      | +6281xxxxxxxxx | Jl. Mutiara Dewa No. 28 | Cikarang | 14638    | Indonesia |
++--------------+---------------------+----------------+-------------------------+----------+----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql>
