@@ -1,0 +1,58 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| saledata           |
++--------------------+
+4 rows in set (0.00 sec)
+mysql> use saledata;
+Database changed
+mysql> create table customer
+    -> (
+    -> id_pelanggan varchar(20)not null,
+    -> nama_pelanggan varchar(50),
+    -> kontak varchar(20),
+    -> alamat varchar(50),
+    -> kota varchar(25),
+    -> kode_pos varchar(10),
+    -> negara varchar(20)
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+mysql> alter table customer
+    -> add constraint pk_customer
+    -> primary key (id_pelanggan);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc customer;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| id_pelanggan   | varchar(20) | NO   | PRI | NULL    |       |
+| nama_pelanggan | varchar(50) | YES  |     | NULL    |       |
+| kontak         | varchar(20) | YES  |     | NULL    |       |
+| alamat         | varchar(50) | YES  |     | NULL    |       |
+| kota           | varchar(25) | YES  |     | NULL    |       |
+| kode_pos       | varchar(10) | YES  |     | NULL    |       |
+| negara         | varchar(20) | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> insert into customer values('cs0003','Ayu Rahmawati','+6281xxxxxxxxx','Jl. Selangor No. 01','Kuala Lumpur','32334','Malasia');
+mysql> insert into customer values('cs0002','Indra Muntahar','+6281xxxxxxxxx','Jl. Mutiara Dewa No. 28','Cikarang','14638','Indonesia');
+mysql> insert into customer values('cs0001','Indriana Dewi Putri','+6281xxxxxxxxx','Jl. Duri Duren No. 40','Bekasi','18466','Indonesia');
+
+mysql> select * from customer;
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| id_pelanggan | nama_pelanggan      | kontak         | alamat                  | kota         | kode_pos | negara    |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| cs0001       | Indriana Dewi Putri | +6281xxxxxxxxx | Jl. Duri Duren No. 40   | Bekasi       | 18466    | Indonesia |
+| cs0002       | Indra Muntahar      | +6281xxxxxxxxx | Jl. Mutiara Dewa No. 28 | Cikarang     | 14638    | Indonesia |
+| cs0003       | Ayu Rahmawati       | +6281xxxxxxxxx | Jl. Selangor No. 01     | Kuala Lumpur | 32334    | Malasia   |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql>
