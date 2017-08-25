@@ -303,3 +303,58 @@ mysql> select * from customer order by nama_pelanggan desc;
 3 rows in set (0.00 sec)
 
 mysql>
+
+SQL AND, OR dan NOT Operator
+SQL AND, OR dan NOT Operator
+Klausa WHERE dapat dikombinasikan dengan AND, OR, dan NOT operator.
+
+AND dan OR operator yang digunakan untuk menyaring catatan didasarkan pada lebih dari satu syarat:
+- Operator AND menampilkan catatan jika semua kondisi dipisahkan oleh DAN BENAR.
+- Operator OR menampilkan catatan jika salah satu kondisi yang dipisahkan oleh OR adalah TRUE.
+Operator tidak menampilkan catatan jika kondisi (s) adalah TIDAK BENAR.
+
+DAN Sintaks:
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition1 AND condition2 AND condition3 ...;
+
+mysql> select * from customer where nama_pelanggan like 'a%' and kode_pos like'%4%';
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+| id_pelanggan | nama_pelanggan | kontak         | alamat              | kota         | kode_pos | negara  |
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+| cs0003       | Ayu Rahmawati  | +6281xxxxxxxxx | Jl. Selangor No. 01 | Kuala Lumpur | 32334    | Malasia |
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+1 row in set (0.00 sec)
+
+OR Sintaks:
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition1 OR condition2 OR condition3 ...;
+
+mysql> select * from customer where nama_pelanggan like 'i%' or kode_pos like'%2%';
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| id_pelanggan | nama_pelanggan      | kontak         | alamat                  | kota         | kode_pos | negara    |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| cs0003       | Ayu Rahmawati       | +6281xxxxxxxxx | Jl. Selangor No. 01     | Kuala Lumpur | 32334    | Malasia   |
+| cs0002       | Indra Muntahar      | +6281xxxxxxxxx | Jl. Mutiara Dewa No. 28 | Cikarang     | 14638    | Indonesia |
+| cs0001       | Indriana Dewi Putri | +6281xxxxxxxxx | Jl. Duri Duren No. 40   | Bekasi       | 18466    | Indonesia |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql>
+
+TIDAK Sintaks:
+SELECT column1, column2, ...
+FROM table_name
+WHERE NOT condition;
+
+mysql> select * from customer where not kota='Bekasi';
++--------------+----------------+----------------+-------------------------+--------------+----------+-----------+
+| id_pelanggan | nama_pelanggan | kontak         | alamat                  | kota         | kode_pos | negara    |
++--------------+----------------+----------------+-------------------------+--------------+----------+-----------+
+| cs0003       | Ayu Rahmawati  | +6281xxxxxxxxx | Jl. Selangor No. 01     | Kuala Lumpur | 32334    | Malasia   |
+| cs0002       | Indra Muntahar | +6281xxxxxxxxx | Jl. Mutiara Dewa No. 28 | Cikarang     | 14638    | Indonesia |
++--------------+----------------+----------------+-------------------------+--------------+----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql>
