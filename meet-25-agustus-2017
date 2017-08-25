@@ -427,3 +427,8 @@ mysql> select * from customer where kota in (select kota from customer);
 3 rows in set (0.00 sec)
 
 mysql>
+
+select transaksi.id_trans 'No. Transaksi', customer.nama 'Nama Kostumer', customer.alamat 'Alamat Kostumer', suplier.nama 'Nama Suplier', suplier.alamat 'Alamat Suplier'
+from transaksi join suplier on transaksi.id=suplier.id join customer on transaksi.id_cus=customer.id_cus
+where customer.alamat in (SELECT suplier.alamat from suplier)
+
