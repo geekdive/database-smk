@@ -55,4 +55,20 @@ mysql> select * from customer;
 +--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
 3 rows in set (0.00 sec)
 
-mysql>
+mysql> select * from customer where alamat like '%No%';
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| id_pelanggan | nama_pelanggan      | kontak         | alamat                  | kota         | kode_pos | negara    |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| cs0001       | Indriana Dewi Putri | +6281xxxxxxxxx | Jl. Duri Duren No. 40   | Bekasi       | 18466    | Indonesia |
+| cs0002       | Indra Muntahar      | +6281xxxxxxxxx | Jl. Mutiara Dewa No. 28 | Cikarang     | 14638    | Indonesia |
+| cs0003       | Ayu Rahmawati       | +6281xxxxxxxxx | Jl. Selangor No. 01     | Kuala Lumpur | 32334    | Malasia   |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from customer where kota like '%Lumpur';                                                                                 
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+| id_pelanggan | nama_pelanggan | kontak         | alamat              | kota         | kode_pos | negara  |
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+| cs0003       | Ayu Rahmawati  | +6281xxxxxxxxx | Jl. Selangor No. 01 | Kuala Lumpur | 32334    | Malasia |
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+1 row in set (0.00 sec)
