@@ -219,6 +219,21 @@ Pernyataan SQL berikut memilih semua pelanggan dengan CustomerName sebuah dimula
 SELECT * FROM Customers
 WHERE CustomerName LIKE 'v%';
 
-CustomerID          CustomerName        	ContactName         	Address	City	        PostalCode  	Country
-83	                Vaffeljernet	        Palle Ibsen	            Smagsløget 45	Århus	8200	        Denmark
-84	                Victuailles en stock	Mary Saveley	        Rue du Commerce	Lyon	69004	        France
+mysql> select * from customer where nama_pelanggan like 'a%';
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+| id_pelanggan | nama_pelanggan | kontak         | alamat              | kota         | kode_pos | negara  |
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+| cs0003       | Ayu Rahmawati  | +6281xxxxxxxxx | Jl. Selangor No. 01 | Kuala Lumpur | 32334    | Malasia |
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from customer where nama_pelanggan like 'i%';
++--------------+---------------------+----------------+-------------------------+----------+----------+-----------+
+| id_pelanggan | nama_pelanggan      | kontak         | alamat                  | kota     | kode_pos | negara    |
++--------------+---------------------+----------------+-------------------------+----------+----------+-----------+
+| cs0001       | Indriana Dewi Putri | +6281xxxxxxxxx | Jl. Duri Duren No. 40   | Bekasi   | 18466    | Indonesia |
+| cs0002       | Indra Muntahar      | +6281xxxxxxxxx | Jl. Mutiara Dewa No. 28 | Cikarang | 14638    | Indonesia |
++--------------+---------------------+----------------+-------------------------+----------+----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql>
