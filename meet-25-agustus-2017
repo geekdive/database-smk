@@ -72,3 +72,30 @@ mysql> select * from customer where kota like '%Lumpur';
 | cs0003       | Ayu Rahmawati  | +6281xxxxxxxxx | Jl. Selangor No. 01 | Kuala Lumpur | 32334    | Malasia |
 +--------------+----------------+----------------+---------------------+--------------+----------+---------+
 1 row in set (0.00 sec)
+
+
+Contoh SQL LIKE Operator
+Pernyataan SQL berikut memilih semua pelanggan dengan Kota diawali dengan huruf "s" :
+
+Contoh
+SELECT * FROM Customers
+WHERE City LIKE 's%';
+
+Tip: The "%" tanda digunakan untuk menentukan wildcard (huruf yang hilang) baik sebelum dan sesudah pola. Anda akan belajar lebih banyak tentang wildcard di bab berikutnya.
+Pernyataan SQL berikut memilih semua pelanggan dengan Kota diakhiri dengan huruf "s" :
+
+Contoh
+SELECT * FROM Customers
+WHERE City LIKE '%s';
+
+Pernyataan SQL berikut memilih semua pelanggan dengan Negara yang berisi pola "land" :
+Contoh
+SELECT * FROM Customers
+WHERE Country LIKE '%land%';
+
+Menggunakan kata kunci TIDAK memungkinkan Anda untuk memilih catatan yang TIDAK sesuai pola.
+Pernyataan SQL berikut memilih semua pelanggan dengan Negara tidak mengandung pola "land" :
+
+Contoh
+SELECT * FROM Customers
+WHERE Country NOT LIKE '%land%';
