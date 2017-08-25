@@ -109,8 +109,8 @@ wildcard SQL digunakan untuk mencari data dalam tabel.
 Dengan SQL, wildcard adalah:
 
 WildCard            Deskripsi
-%	                Sebuah pengganti nol atau lebih karakter
-_	                Sebuah pengganti karakter tunggal
+%                   Sebuah pengganti nol atau lebih karakter
+_                   Sebuah pengganti karakter tunggal
 [ charlist ]	    Set dan rentang karakter untuk mencocokkan
 [^ charlist ]
 or
