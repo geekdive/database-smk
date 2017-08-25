@@ -237,3 +237,69 @@ mysql> select * from customer where nama_pelanggan like 'i%';
 2 rows in set (0.00 sec)
 
 mysql>
+
+SQL ORDER BY Kata Kunci
+ORDER BY kata kunci digunakan untuk mengurutkan hasil-set di menaik atau menurun.
+ORDER BY kata kunci macam catatan dalam urutan menaik secara default. Untuk mengurutkan catatan dalam urutan, gunakan kata kunci DESC.
+
+ORDER BY Syntax:
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC|DESC;
+
+Demo database
+Di bawah ini adalah pilihan dari "Pelanggan" tabel dalam database Northwind sampel:
+mysql> select * from customer;
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| id_pelanggan | nama_pelanggan      | kontak         | alamat                  | kota         | kode_pos | negara    |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| cs0003       | Ayu Rahmawati       | +6281xxxxxxxxx | Jl. Selangor No. 01     | Kuala Lumpur | 32334    | Malasia   |
+| cs0002       | Indra Muntahar      | +6281xxxxxxxxx | Jl. Mutiara Dewa No. 28 | Cikarang     | 14638    | Indonesia |
+| cs0001       | Indriana Dewi Putri | +6281xxxxxxxxx | Jl. Duri Duren No. 40   | Bekasi       | 18466    | Indonesia |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql>
+
+ORDER BY Contoh
+Pernyataan SQL berikut memilih semua pelanggan dari "Pelanggan" meja, diurutkan berdasarkan kolom "Negara":
+
+Contoh
+SELECT * FROM Customers
+ORDER BY Country;
+
+ORDER BY DESC Contoh
+Pernyataan SQL berikut memilih semua pelanggan dari "Pelanggan" meja, diurutkan turun dengan kolom "Negara":
+
+Contoh
+SELECT * FROM Customers
+ORDER BY Country DESC;
+
+Ascending
+Pengurutan dari yang terkecil ke yang terbesar
+
+Descending
+Pengurutan dari yang terbesar ke yang terkecil
+
+mysql> select * from customer
+    -> order by nama_pelanggan asc;
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| id_pelanggan | nama_pelanggan      | kontak         | alamat                  | kota         | kode_pos | negara    |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| cs0003       | Ayu Rahmawati       | +6281xxxxxxxxx | Jl. Selangor No. 01     | Kuala Lumpur | 32334    | Malasia   |
+| cs0002       | Indra Muntahar      | +6281xxxxxxxxx | Jl. Mutiara Dewa No. 28 | Cikarang     | 14638    | Indonesia |
+| cs0001       | Indriana Dewi Putri | +6281xxxxxxxxx | Jl. Duri Duren No. 40   | Bekasi       | 18466    | Indonesia |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from customer order by nama_pelanggan desc;
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| id_pelanggan | nama_pelanggan      | kontak         | alamat                  | kota         | kode_pos | negara    |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| cs0001       | Indriana Dewi Putri | +6281xxxxxxxxx | Jl. Duri Duren No. 40   | Bekasi       | 18466    | Indonesia |
+| cs0002       | Indra Muntahar      | +6281xxxxxxxxx | Jl. Mutiara Dewa No. 28 | Cikarang     | 14638    | Indonesia |
+| cs0003       | Ayu Rahmawati       | +6281xxxxxxxxx | Jl. Selangor No. 01     | Kuala Lumpur | 32334    | Malasia   |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql>
