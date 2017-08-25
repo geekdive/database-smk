@@ -100,6 +100,16 @@ Contoh
 SELECT * FROM Customers
 WHERE Country NOT LIKE '%land%';
 
+mysql> select * from customer where nama_pelanggan not like '%in%';
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+| id_pelanggan | nama_pelanggan | kontak         | alamat              | kota         | kode_pos | negara  |
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+| cs0003       | Ayu Rahmawati  | +6281xxxxxxxxx | Jl. Selangor No. 01 | Kuala Lumpur | 32334    | Malasia |
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+1 row in set (0.00 sec)
+
+mysql>
+
 SQL WildCard
 Sebuah karakter wildcard dapat digunakan untuk menggantikan karakter lain (s) dalam sebuah string.
 
@@ -203,3 +213,12 @@ WHERE CustomerName LIKE '_r%'	    Finds any values that have "r" in the second p
 WHERE CustomerName LIKE 'a_%_%'	    Finds any values that starts with "a" and are at least 3 characters in length
 WHERE ContactName LIKE 'a%o'	    Finds any values that starts with "a" and ends with "o"
 
+Contoh SQL LIKE
+Pernyataan SQL berikut memilih semua pelanggan dengan CustomerName sebuah dimulai dengan "a":
+
+SELECT * FROM Customers
+WHERE CustomerName LIKE 'v%';
+
+CustomerID          CustomerName        	ContactName         	Address	City	        PostalCode  	Country
+83	                Vaffeljernet	        Palle Ibsen	            Smagsløget 45	Århus	8200	        Denmark
+84	                Victuailles en stock	Mary Saveley	        Rue du Commerce	Lyon	69004	        France
