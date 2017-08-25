@@ -99,3 +99,107 @@ Pernyataan SQL berikut memilih semua pelanggan dengan Negara tidak mengandung po
 Contoh
 SELECT * FROM Customers
 WHERE Country NOT LIKE '%land%';
+
+SQL WildCard
+Sebuah karakter wildcard dapat digunakan untuk menggantikan karakter lain (s) dalam sebuah string.
+
+Karakter SQL Wildcard
+Dalam SQL, karakter wildcard digunakan dengan operator SQL LIKE.
+wildcard SQL digunakan untuk mencari data dalam tabel.
+Dengan SQL, wildcard adalah:
+
+WildCard            Deskripsi
+%	                Sebuah pengganti nol atau lebih karakter
+_	                Sebuah pengganti karakter tunggal
+[ charlist ]	    Set dan rentang karakter untuk mencocokkan
+[^ charlist ]
+or
+[! charlist ]
+
+Demo database
+Dalam tutorial ini kita akan menggunakan terkenal sampel database Northwind.
+Di bawah ini adalah pilihan dari "costomer" tabel:
+
+mysql> select * from customer;
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| id_pelanggan | nama_pelanggan      | kontak         | alamat                  | kota         |kode_pos | negara    |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+| cs0001       | Indriana Dewi Putri | +6281xxxxxxxxx | Jl. Duri Duren No. 40   | Bekasi       |18466    | Indonesia |
+| cs0002       | Indra Muntahar      | +6281xxxxxxxxx | Jl. Mutiara Dewa No. 28 | Cikarang     |14638    | Indonesia |
+| cs0003       | Ayu Rahmawati       | +6281xxxxxxxxx | Jl. Selangor No. 01     | Kuala Lumpur |32334    | Malasia   |
++--------------+---------------------+----------------+-------------------------+--------------+----------+-----------+
+3 rows in set (0.00 sec)
+
+Menggunakan SQL% Wildcard
+Pernyataan SQL berikut memilih semua pelanggan dengan Kota dimulai dengan "ber" :
+Contoh
+SELECT * FROM Customers
+WHERE kota LIKE 'bek%';
+
+mysql> SELECT * FROM customer
+    -> WHERE kota LIKE 'bek%';
++--------------+---------------------+----------------+-----------------------+--------+----------+-----------+
+| id_pelanggan | nama_pelanggan      | kontak         | alamat                | kota   | kode_pos | negara    |
++--------------+---------------------+----------------+-----------------------+--------+----------+-----------+
+| cs0001       | Indriana Dewi Putri | +6281xxxxxxxxx | Jl. Duri Duren No. 40 | Bekasi | 18466    | Indonesia |
++--------------+---------------------+----------------+-----------------------+--------+----------+-----------+
+1 row in set (0.00 sec)
+
+mysql>
+
+Pernyataan SQL berikut memilih semua pelanggan dengan Kota yang berisi pola "es" :
+
+Contoh
+SELECT * FROM Customers
+WHERE City LIKE '%es%';
+
+
+Menggunakan SQL _ Wildcard
+Pernyataan SQL berikut memilih semua pelanggan dengan Kota dimulai dengan karakter apapun, diikuti oleh "erlin" :
+
+Contoh
+SELECT * FROM Customers
+WHERE City LIKE '_erlin';
+
+Pernyataan SQL berikut memilih semua pelanggan dengan Kota dimulai dengan "L" , diikuti oleh karakter apapun, 
+diikuti oleh "n" , diikuti oleh karakter apapun, diikuti dengan "on" :
+
+Contoh
+SELECT * FROM Customers
+WHERE City LIKE 'L_n_on';
+
+mysql> select * from customer where kota like '_ekasi';
++--------------+---------------------+----------------+-----------------------+--------+----------+-----------+
+| id_pelanggan | nama_pelanggan      | kontak         | alamat                | kota   | kode_pos | negara    |
++--------------+---------------------+----------------+-----------------------+--------+----------+-----------+
+| cs0001       | Indriana Dewi Putri | +6281xxxxxxxxx | Jl. Duri Duren No. 40 | Bekasi | 18466    | Indonesia |
++--------------+---------------------+----------------+-----------------------+--------+----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> select * from customer where kota like '_uala Lumpur';
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+| id_pelanggan | nama_pelanggan | kontak         | alamat              | kota         | kode_pos | negara  |
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+| cs0003       | Ayu Rahmawati  | +6281xxxxxxxxx | Jl. Selangor No. 01 | Kuala Lumpur | 32334    | Malasia |
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from customer where kota like 'K_ala_Lumpur';
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+| id_pelanggan | nama_pelanggan | kontak         | alamat              | kota         | kode_pos | negara  |
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+| cs0003       | Ayu Rahmawati  | +6281xxxxxxxxx | Jl. Selangor No. 01 | Kuala Lumpur | 32334    | Malasia |
++--------------+----------------+----------------+---------------------+--------------+----------+---------+
+1 row in set (0.00 sec)
+
+mysql>
+
+Berikut adalah beberapa contoh yang menunjukkan operator seperti berbeda dengan '%' dan '_' wildcard:
+LIKE Operator	                    Description
+WHERE CustomerName LIKE 'a%'	    Finds any values that starts with "a"
+WHERE CustomerName LIKE '%a'	    Finds any values that ends with "a"
+WHERE CustomerName LIKE '%or%'	    Finds any values that have "or" in any position
+WHERE CustomerName LIKE '_r%'	    Finds any values that have "r" in the second position
+WHERE CustomerName LIKE 'a_%_%'	    Finds any values that starts with "a" and are at least 3 characters in length
+WHERE ContactName LIKE 'a%o'	    Finds any values that starts with "a" and ends with "o"
+
